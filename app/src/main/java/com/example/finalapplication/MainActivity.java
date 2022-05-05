@@ -2,9 +2,12 @@ package com.example.finalapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -56,10 +59,16 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, courses);
         coursesList.setAdapter(adapter);
 
+        //Adding the onClick effect to open the web view
 
-
-
-
+        coursesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent newIntent = new Intent(getApplicationContext(), WebView.class);
+                newIntent.putExtra("links", links.get(i));
+                startActivity(newIntent);
+            }
+        });
 
     }
 }
