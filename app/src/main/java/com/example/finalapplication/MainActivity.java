@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         coursesList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent newIntent = new Intent(getApplicationContext(), WebView.class);
+                Intent newIntent = new Intent(getApplicationContext(), webView.class);
                 newIntent.putExtra("links", links.get(i));
                 startActivity(newIntent);
             }
